@@ -1,9 +1,5 @@
 {
   "version": 2,
   "buildCommand": "node scripts/vercel-build.mjs",
-  "outputDirectory": "public",
-  "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/index.py" },
-    { "source": "/(.*)", "destination": "/$1" }
-  ]
+  "outputDirectory": "public"
 }

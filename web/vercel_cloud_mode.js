@@ -1,12 +1,9 @@
 (function () {
-  async function banner() {
-    try {
-      const health = await fetch('/api/health').then(response => response.json());
-      if (health.mode !== 'cloud-viewer' || document.querySelector('.cloud-viewer-banner')) return;
+  function banner() {
+      if (!location.hostname.endsWith('.vercel.app') || document.querySelector('.cloud-viewer-banner')) return;
       const node = document.createElement('div'); node.className = 'cloud-viewer-banner';
-      node.innerHTML = '<strong>Cloud viewer mode</strong><span>Live Windows Wi-Fi, hardware, and local-network data remain available only through the local NetCoop collector. This hosted view does not invent readings.</span>';
+      node.innerHTML = '<strong>Synthetic cloud demonstration</strong><span>All displayed network values are fabricated demo data for presentation. Real Windows Wi-Fi, hardware, and local-network data require the local NetCoop collector.</span>';
       document.body.prepend(node);
-    } catch (_) {}
   }
   window.addEventListener('load', banner);
 })();
