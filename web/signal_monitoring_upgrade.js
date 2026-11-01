@@ -20,10 +20,14 @@
     const page = document.querySelector('.page'); if (!page || !S) return;
     const heading = page.querySelector('h1');
     if (S.page === 'coverage') {
-      if (heading) heading.textContent = 'Wi-Fi survey snapshot';
+      // This function is called by the DOM observer after every application
+      // render. Avoid writing the same value again: an unconditional
+      // textContent assignment triggers the observer again and can freeze the
+      // Signal Coverage page in a render loop.
+      if (heading && heading.textContent !== 'Wi-Fi survey snapshot') heading.textContent = 'Wi-Fi survey snapshot';
       const labels = [...page.querySelectorAll('.summary-grid .sum-card span')];
       const map = {'Access points observed':'Access points found in last scan','Best single AP':'Strongest access point','Other overlapping APs':'Additional nearby access points','Combined RSSI':'Combined RSSI'};
-      labels.forEach(label => { const original = label.textContent.trim(); if (map[original]) label.textContent = map[original]; if (original === 'Combined RSSI') label.closest('.sum-card').style.display = 'none'; });
+      labels.forEach(label => { const original = label.textContent.trim(); if (map[original] && map[original] !== original) label.textContent = map[original]; if (original === 'Combined RSSI' && label.closest('.sum-card').style.display !== 'none') label.closest('.sum-card').style.display = 'none'; });
       const card = [...page.querySelectorAll('.card')].find(item => item.querySelector('.card-title')?.textContent.startsWith('Signal readings'));
       if (card && !card.querySelector('.wifi-snapshot-panel')) { card.querySelector('.card-title').textContent = 'Access points from last Wi-Fi scan'; card.querySelector('.card-body').insertAdjacentHTML('afterbegin', snapshotPanel()); const legacy = card.querySelector('.signal-list'); if (legacy) legacy.classList.add('legacy-signal-list'); }
     }
