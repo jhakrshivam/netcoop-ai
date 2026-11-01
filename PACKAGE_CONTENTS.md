@@ -34,6 +34,10 @@ $env:NETCOOP_PYTHON = 'C:\Path\To\python.exe'
   trace, downloadable JSON action reports, and local SQLite storage.
 - Alert monitor, passive local throughput scan, and an on-page JSON-download
   history when the dashboard is run from this package.
+- A dedicated **JSON Downloads** navigation page listing available generated
+  reports and dashboard download events.
+- A staged hardware/software roadmap in
+  `docs/FUTURE_HARDWARE_SOFTWARE_ROADMAP.md`.
 
 No feature changes router configuration, controls student Internet access,
 redistributes bandwidth, or modifies network traffic. Those actions require a
