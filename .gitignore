@@ -6,5 +6,6 @@ __pycache__/
 .pytest_cache/
 netcoop.db
 outputs/*.zip
+public/
 work/*
 !work/.gitkeep

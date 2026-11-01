@@ -43,6 +43,19 @@ controller credentials only in deployment environment variables.
 
 The server binds to `127.0.0.1`, so only this computer can open it. Sharing the dashboard with other people requires an authenticated HTTPS deployment; do not expose the current local server directly to a LAN or the Internet.
 
+## Vercel cloud viewer
+
+The repository includes a Vercel-compatible **cloud viewer**. It hosts the
+dashboard UI but clearly marks local collection unavailable: a Vercel function
+cannot inspect a visitor's Windows Wi-Fi radio, ARP cache, adapters, CPU sensor,
+or router. The hosted page does not fabricate those readings.
+
+Import this GitHub repository into Vercel. `vercel.json` copies `web/` to the
+static output folder and `api/index.py` serves explicit cloud-viewer responses.
+For a full cloud deployment, add an approved local/edge collector, authenticated
+ingest API, TLS secrets, and persistent cloud database before enabling shared
+telemetry or report history.
+
 ## Portable startup and JSON operation reports
 
 Use `./netcoop.cmd serve` from the extracted project folder. The portable launcher resolves its own location, validates the server with `GET /api/health` before opening a browser, and replaces only an older NetCoop process from the same project when an update is detected. See [START_HERE.md](START_HERE.md) and the [portable handoff chart](outputs/PORTABLE_DEPLOYMENT_REQUIREMENTS.md).
