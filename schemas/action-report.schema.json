@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://netcoop.local/schemas/action-report.schema.json",
+  "title": "NetCoop API action report",
+  "type": "object",
+  "required": ["action_id", "action", "created_at", "outcome", "http_status", "summary", "result", "limitations"],
+  "properties": {
+    "action_id": {"type": "string", "minLength": 1},
+    "action": {"type": "string", "minLength": 1},
+    "created_at": {"type": "string", "format": "date-time"},
+    "outcome": {"enum": ["completed", "accepted", "failed"]},
+    "http_status": {"type": "integer", "minimum": 100, "maximum": 599},
+    "summary": {"type": "string"},
+    "result": {"type": "object"},
+    "limitations": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}

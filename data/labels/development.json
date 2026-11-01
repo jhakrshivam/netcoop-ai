@@ -1,0 +1,1 @@
+{"note":"Evaluation-only synthetic labels. Agents never read this file.","scenarios":{"link_congestion":"congestion","weak_wifi":"weak_wireless_signal","interface_fault":"interface_fault","dns_failure":"dns_dhcp_failure","dhcp_failure":"dns_dhcp_failure","device_cpu_overload":"device_overload","upstream_failure":"upstream_issue"}}

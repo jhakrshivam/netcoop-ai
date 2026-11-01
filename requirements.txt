@@ -1,0 +1,8 @@
+# NetCoop AI runtime and test dependencies.
+# Supported Python versions: 3.11, 3.12, 3.13, and 3.14.
+pydantic>=2.7,<3.0
+PyYAML>=6.0,<7.0
+psutil>=5.9,<8.0
+
+# Test runner (needed only for `python -m pytest`).
+pytest>=8.0,<9.0

@@ -1,0 +1,10 @@
+work/message-log.jsonl
+.phase1-deps/
+*.pyc
+__pycache__/
+.venv/
+.pytest_cache/
+netcoop.db
+outputs/*.zip
+work/*
+!work/.gitkeep
